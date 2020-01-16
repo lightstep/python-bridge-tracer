@@ -5,8 +5,10 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
 git_repository(
     name = "io_opentracing_cpp",
-    remote = "https://github.com/opentracing/opentracing-cpp",
-    commit = "ac50154a7713877f877981c33c3375003b6ebfe1",
+    # remote = "https://github.com/opentracing/opentracing-cpp",
+    # commit = "ac50154a7713877f877981c33c3375003b6ebfe1",
+    remote = "https://github.com/rnburn/opentracing-cpp",
+    commit = "43898de4d6f1a0c87f544a8de4ab045377b34281",
 )
 
 http_archive(

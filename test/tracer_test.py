@@ -272,6 +272,12 @@ class TestTracer(unittest.TestCase):
         span_context = tracer.extract(opentracing.Format.BINARY, carrier)
         self.assertIsNotNone(span_context)
 
+    def test_propagation3(self):
+        tracer, _ = make_mock_tracer()
+        carrier = {}
+        span_context = tracer.extract(opentracing.Format.TEXT_MAP, carrier)
+        self.assertIsNone(span_context)
+
     def test_propagation_error(self):
         tracer, traces_path = make_mock_tracer()
         carrier = {}

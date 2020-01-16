@@ -385,6 +385,9 @@ PyObject* TracerBridge::extract(PyObject* args, PyObject* keywords) noexcept {
 template <class Carrier>
 opentracing::expected<std::unique_ptr<opentracing::SpanContext>>
 TracerBridge::extract(PyObject* carrier) noexcept {
+  if (PyDict_Check(carrier) != 1) {
+    return opentracing::make_unexpected(python_error);
+  }
   DictReader dict_reader{carrier};
   return tracer_->Extract(static_cast<Carrier&>(dict_reader));
 }
