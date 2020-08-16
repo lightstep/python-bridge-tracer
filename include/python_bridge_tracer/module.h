@@ -14,7 +14,7 @@
 #define PYTHON_BRIDGE_TRACER_MODULE_RETURN(VALUE) return VALUE
 #else
 #define PYTHON_BRIDGE_TRACER_DEFINE_MODULE(NAME) PyMODINIT_FUNC init##NAME() noexcept
-#define PYTHON_BRIDGE_TRACER_MODULE_RETURN(VALUE) return
+#define PYTHON_BRIDGE_TRACER_MODULE_RETURN(VALUE) do { (void)(VALUE); return; } while (false)
 #endif
 
 namespace python_bridge_tracer {
